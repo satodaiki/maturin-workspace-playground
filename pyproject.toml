@@ -1,0 +1,33 @@
+[project]
+name = "maturin-workspace-playground"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "nanao", email = "banana5388@gmail.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["maturin>=1.2,<2.0"]
+build-backend = "maturin"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pip>=24.2",
+    "pytest>=8.3.2",
+]
+
+[tool.maturin]
+python-source = "python"
+module-name = "maturin_workspace_playground._lowlevel"
+features = ["pyo3/extension-module"]
+manifest-path = "rust/python-api/Cargo.toml"
+
+[tool.pytest.ini_options]
+addopts = "-s"
+testpaths = [
+    "python/tests",
+]
